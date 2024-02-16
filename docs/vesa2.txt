@@ -1,0 +1,36 @@
+AstleyOS/Bootloader/Pure64/src/init/isa.asm:	cmp byte [cfg_vesa], 1		; Check if VESA should be enabled
+AstleyOS/Bootloader/Pure64/src/init/isa.asm:	jne VBEdone			; If not then skip VESA init
+AstleyOS/Bootloader/Pure64/src/init/isa.asm:	; CX queries the mode, it should be in the form 0x41XX as bit 14 is set for LFB and bit 8 is set for VESA mode
+AstleyOS/Bootloader/Pure64/src/init/isa.asm:	mov si, msg_novesa
+AstleyOS/Bootloader/Pure64/src/init/isa.asm:	mov byte [cfg_vesa], 0		; Clear the VESA config as it was not successful
+AstleyOS/Bootloader/Pure64/src/sysvar.asm:cfg_vesa:		db 0	; By default VESA is disabled. Set to 1 to enable.
+AstleyOS/Bootloader/Pure64/src/sysvar.asm:msg_novesa:		db 'VESA error', 0
+AstleyOS/Bootloader/Pure64/src/sysvar.asm:; VESA
+Binary file ByteOS/os.iso matches
+Create_OS/OS笔记.md:> 这一个也有点复杂，AX寄存器应该是`4f02h`自然，然后通过BX寄存器指定要设置的内容，BX是双字，也就是16位的，其中低9位用来指定模式号，其中的第9位是0代表这不是VESA定义的功能号，反之是的，所以功能号一般是写成三位16进制的，但是最高位实际上只对应一个二进制位，自然只能是0或者1.
+Docs/install.txt:* Videocard: supporting VGA (640*480*16 mode) or Vesa
+Docs/sysfuncs.txt:by work in VESA modes with LFB sets color of the left upper point
+Dynacube/dynacube_1/svga.h:  /* VESA 2.0 variables */
+Binary file KOS/KOSmk4-master.zip matches
+RiderOS/loader.asm:Label_SET_SVGA_Mode_VESA_VBE_FAIL:
+RiderOS/loader.asm:;=======	set the SVGA mode(VESA VBE)
+RiderOS/loader.asm:	jnz	Label_SET_SVGA_Mode_VESA_VBE_FAIL
+TempleOS/ZealOS/zealbooter/zealbooter.c:#define RLF_VESA  0b010
+TempleOS/ZealOS/zealbooter/zealbooter.c:    kernel->sys_run_level = RLF_VESA | RLF_16BIT | RLF_32BIT;
+Binary file TempleOS/ZealOS/build/AUTO.ISO matches
+Binary file TempleOS/ZealOS/.git/objects/pack/pack-c0c949422c3cb2a9db6c4edbdf951f3373f24ab9.pack matches
+TempleOS/ZealOS/src/Misc/Clementine.TXT:16:5 Et in tantum vesani? proruperunt, ut eos qui credita sibi officia diligenter observant, et ita cuncta agunt ut omnium laude digni sint, mendaciorum cuniculis conentur subvertere,
+Binary file TempleOS/ZealOS/src/System/AutoComplete/ACDefs.DATA matches
+Binary file TempleOS/ZealOS/src/System/AutoComplete/ACWords.DATA matches
+TempleOS/ZealOS/src/System/Boot/BootRAM.ZC:	hi_image->sys_run_level			= lo_image->sys_run_level & (RLF_VESA | RLF_16BIT);
+TempleOS/ZealOS/src/System/Gr/GrGlobals.ZC://See $LK,"RLf_VESA",A="FF:::/Kernel/KStart16.ZC,RLf_VESA"$
+TempleOS/ZealOS/src/System/Utils/SysRep.ZC:		"VESA Local Bus\0"
+TempleOS/ZealOS/src/System/Utils/SysRep.ZC:		"VESA Local Bus\0"
+TempleOS/ZealOS/src/Doc/ChangeLog.DD:* $LK,"R",A="MN:R"$("RLf_VGA", "$LK,"RLf_VESA",A="MN:RLf_VESA"$");
+TempleOS/ZealOS/src/Kernel/KStart16.ZC:		BTS 	U32 [SYS_RUN_LEVEL], RLf_VESA
+TempleOS/ZealOS/src/Kernel/KernelA.HH:#define RLf_VESA					1
+TempleOS/ZealOS/src/Kernel/KernelA.HH:#define RLF_VESA					(1 << RLf_VESA)
+Binary file TempleOS/TinkerOS/.git/objects/pack/pack-3867fd244cc71c33029cbc5ea425a6ff38a006b1.pack matches
+Binary file TempleOS/TinkerOS/Adam/AutoComplete/ACDefs.DATA matches
+TempleOS/TinkerOS/Adam/Opt/Utils/SysRep.HC:                "VESA Local Bus\0"
+TempleOS/TinkerOS/Adam/Opt/Utils/SysRep.HC:                "VESA Local Bus\0"

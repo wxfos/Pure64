@@ -123,7 +123,9 @@ The commands require Pure64 to be build and `pure64.sys` and `mbr.sys` to be in 
 as your kernel with the name `kernel.bin`
 
 ```
-dd if=/dev/zero of=disk.img count=128 bs=1048576
+#dd if=/dev/zero of=disk.img count=128 bs=1048576
+dd if=/dev/zero of=disk.img count=128 bs=512
+
 cat pure64.sys kernel.bin > software.sys
 
 dd if=mbr.sys of=disk.img conv=notrunc

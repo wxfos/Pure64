@@ -561,7 +561,11 @@ serial_done:
 	xor r13, r13
 	xor r14, r14
 	xor r15, r15
+
+loop:
 	jmp 0x00100000
+	hlt
+	jmp loop
 
 
 %include "init/acpi.asm"
